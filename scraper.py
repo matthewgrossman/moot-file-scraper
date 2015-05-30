@@ -2,16 +2,7 @@ import os.path
 import time
 import urllib.request
 import json
-
 import argparse
-
-parser = argparse.ArgumentParser(description="Download .gifs from 4Chan")
-parser.add_argument("-b", "--board", dest="boardname", default="b")
-parser.add_argument("-d", "--dest", dest="dest", default="")
-options = parser.parse_args()
-
-absolute_path = os.path.join(os.getcwd(), options.dest)
-print ( absolute_path )
 
 # sleeps for time=limit before calling the function
 def rate_limit(limit):
@@ -49,8 +40,15 @@ def download_gif(gif_tim, boardname, save_path):
         out_file.write(response.read())
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Download .gifs from 4Chan")
+    parser.add_argument("-b", "--board", dest="boardname", default="b")
+    parser.add_argument("-d", "--dest", dest="dest", default="")
+    options = parser.parse_args()
+
+    absolute_path = os.path.join(os.getcwd(), options.dest)
+
     threads = thread_ids(options.boardname)
     for thread in threads:
         tims = gif_tims_for_thread(options.boardname, thread)
         for tim in tims:
-            download_gif(tim, options.boardname, options.dest)
+            download_gif(tim, options.boardname, absolute_path)
