@@ -41,9 +41,6 @@ def download_gif(gif_url, save_path):
     with urllib.request.urlopen(gif_url) as response, open(out_path, 'wb') as out_file:
         data = response.read()
         out_file.write(data)
-
-download_gif("http://i.4cdn.org/b/1433004501165.gif", absolute_path)
-
     
 # def gif_urls_for_threads(thread_ids):
 #     for thread in thread_ids:
