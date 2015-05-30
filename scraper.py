@@ -21,7 +21,6 @@ def rate_limit(limit):
         return wrapped_f
     return wrap
 
-@rate_limit(1.0)
 def thread_ids(boardname):
     response = urllib.request.urlopen("http://a.4cdn.org/"+ boardname + "/threads.json")
     data = json.loads(response.read().decode())
@@ -42,18 +41,15 @@ def gif_urls_for_thread(boardname, thread_id):
 
     # parse the JSON and add all the gif urls to the array
     gif_urls = []
+    print(data['posts'][0]['now'])
 
     return gif_urls
 
-@rate_limit(1.0)
-def download_gif(gif_url, save_path):
-    out_path = save_path + '/' + gif_url.split('/')[-1]
+def download_gif(gif_tim, boardname, save_path):
+    out_path = save_path + boardname + '_' + str(gif_tim)
+    gif_url = "http://i.4cdn.org/" + boardname + "/" + str(gif_tim) + ".gif"
+    print(gif_url)
     with urllib.request.urlopen(gif_url) as response, open(out_path, 'wb') as out_file:
-        data = response.read()
-        out_file.write(data)
+        out_file.write(response.read())
 
-print(thread_ids(options.boardname))
-    
-# def gif_urls_for_threads(thread_ids):
-#     for thread in thread_ids:
-
+download_gif(1432997104636, 'vg', options.dest) 
