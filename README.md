@@ -10,4 +10,4 @@ Who knows where it'll end; if we're bored, we can use some CV to filter out the 
 
 
 #####
-Uses the (4chan api)[https://github.com/4chan/4chan-API]
+Uses the [4chan API](https://github.com/4chan/4chan-API)
