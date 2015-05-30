@@ -4,10 +4,9 @@ Now that FB supports gifs, I need to build my reactions folder. I've been casual
 
 Who knows where it'll end; if we're bored, we can use some CV to filter out the NSFW
 
-### Example Usage
-- mkdir gifs 
-- python3 scraper.py -b pol -d gifs
-
-
-#####
 Uses the [4chan API](https://github.com/4chan/4chan-API)
+
+### Example Usage
+```bash
+mkdir gifs && python3 scraper.py -b g -d gifs
+```
