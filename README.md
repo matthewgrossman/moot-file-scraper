@@ -5,4 +5,5 @@ Now that FB supports gifs, I need to build my reactions folder. I've been casual
 Who knows where it'll end; if we're bored, we can use some CV to filter out the porn
 
 ### Example Usage
-python3 scraper.py -b pol -d $HOME/Documents/4changifs
+mkdir gifs
+python3 scraper.py -b pol -d gifs
