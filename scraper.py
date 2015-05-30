@@ -25,8 +25,6 @@ def rate_limit(limit):
 # get all thread_ids for a given board
 @rate_limit(1.0)
 def thread_ids(boardname):
-    mystr = "http://a.4cdn.org/"+ boardname + "/threads.json"
-    print ( mystr )
     response = urllib.request.urlopen("http://a.4cdn.org/"+ boardname + "/threads.json")
     data = json.loads(response.read().decode())
 
