@@ -7,3 +7,7 @@ Who knows where it'll end; if we're bored, we can use some CV to filter out the 
 ### Example Usage
 - mkdir gifs 
 - python3 scraper.py -b pol -d gifs
+
+
+#####
+Uses the (4chan api)[https://github.com/4chan/4chan-API]
