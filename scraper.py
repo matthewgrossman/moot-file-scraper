@@ -35,12 +35,24 @@ def thread_ids(boardname):
     #        thread_ids.append(thread["no"])
     #return thread_ids
 
+# get urls of all gifs in a given thread
+def gif_urls_for_thread(boardname, thread_id):
+    response = urllib.request.urlopen("http://a.4cdn.org/" + boardname+ "/thread/" + thread_id + ".json")
+    data = json.loads(response.read().decode())
+
+    # parse the JSON and add all the gif urls to the array
+    gif_urls = []
+
+    return gif_urls
+
 @rate_limit(1.0)
 def download_gif(gif_url, save_path):
     out_path = save_path + '/' + gif_url.split('/')[-1]
     with urllib.request.urlopen(gif_url) as response, open(out_path, 'wb') as out_file:
         data = response.read()
         out_file.write(data)
+
+print(thread_ids(options.boardname))
     
 # def gif_urls_for_threads(thread_ids):
 #     for thread in thread_ids:
