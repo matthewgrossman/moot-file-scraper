@@ -3,12 +3,12 @@ import time
 import urllib.request
 import json
 
-from optparse import OptionParser
+import argparse
 
-parser = OptionParser()
-parser.add_option("-b", "--board", type="string", dest="boardname", default="b")
-parser.add_option("-d", "--dest", type="string", dest="dest", default="")
-(options, args) = parser.parse_args()
+parser = argparse.ArgumentParser(description="Download .gifs from 4Chan")
+parser.add_argument("-b", "--board", dest="boardname", default="b")
+parser.add_argument("-d", "--dest", dest="dest", default="")
+options = parser.parse_args()
 
 absolute_path = os.path.join(os.getcwd(), options.dest)
 print ( absolute_path )
