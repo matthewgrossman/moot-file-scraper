@@ -14,8 +14,13 @@ def thread_ids(boardname):
     response = urllib.request.urlopen("http://a.4cdn.org/"+ boardname + "/threads.json")
     data = json.loads(response.read().decode())
 
-    thread_ids = []
-    for page in data:
-        for thread in page["threads"]:
-            thread_ids.append(thread["no"])
-    return thread_ids
+    return [thread["no"] for page in data for thread in page["threads"]]
+    
+    # list comprehensions are pretty, but the code is doing this:
+    #thread_ids = []
+    #for page in data:
+    #    for thread in page["threads"]:
+    #        thread_ids.append(thread["no"])
+    #return thread_ids
+
+print(thread_ids('pol'))
